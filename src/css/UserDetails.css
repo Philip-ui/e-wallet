@@ -1,0 +1,106 @@
+:root{
+    --primary-purple:#9381ff;
+    --secondary-purple: #b8b8ff;
+    --light-white: #f8f7ff;
+    --primary-peach: #ffd8be;
+    --secondary-peach: #ffeedd;
+}
+
+/* Top section styling */
+.top-section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.app-name{
+    font-weight: 600;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.notification{
+    color: var(--primary-purple);
+}
+
+/* Transfer options styling */
+.transfer-options {
+  text-align: center;
+}
+
+.option {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 6px -1px rgb(147, 129, 255,.4),0 2px 4px -2px rgb(147, 129, 255,.4);
+    color: rgb(255 255 255);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: .75rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-purple);
+    border-radius: 0.5rem;
+    margin: 10px;
+    margin-left: 0;
+    border: 2px solid var(--primary-purple);
+}
+
+.option:hover{
+    color: var(--primary-purple);
+    background-color: var(--light-white);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+/* Transfer amount styling */
+.transfer-container, .recieving-user-container{
+    display: flex;
+    line-height: 28px;
+    align-items: center;
+    position: relative;
+    max-width: 190px;
+    margin: 10px;
+  }
+  
+  #transfer-amount, #recieving-user{
+    height: 40px;
+    line-height: 28px;
+    padding: 0 1rem;
+    width: 100%;
+    padding-left: 1rem;
+    border: 2px solid var(--primary-purple);
+    border-radius: 8px;
+    outline: none;
+    background-color: var(--light-white);
+    color: var(--primary-purple);
+    transition: .3s ease;
+  }
+
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+  #transfer-amount::placeholder {
+    color: var(--primary-purple);
+  }
+  
+  .icon {
+    position: absolute;
+    left: 1.5rem;
+    top: -3rem;
+    color: var(--primary-purple);
+    width: 1rem;
+    height: 1rem;
+  }
+  
+
+  
+  
+  
+  
