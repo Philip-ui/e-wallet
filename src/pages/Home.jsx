@@ -2,11 +2,6 @@ import { useState } from "react";
 import { Bell } from "react-bootstrap-icons"
 import { Col,  Row, Modal, Form, Button } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
-//import {LoginoutContext}  from './LoginoutContext';
-//import { AuthContext } from './AuthContext';
-//import { Outlet} from 'react-router-dom';
-//import TodoCard from "../components/TodoCard";
-//import { TodoContext } from "../contexts/TodoContext";
 import "../css/MainContainer.css";
 import "../css/Mastercard.css";
 import "../css/Style.css";
@@ -30,23 +25,23 @@ export default function Home() {
   const [descriptionError, setDescriptionError] = useState('');
 
   const handleDeposit = () => {
-    // Add logic for deposit here
-    // Update total amount, etc.
-    // Update recent transactions
-     // Reset previous errors
+  // Reset previous errors
      setAmountError('');
      setDescriptionError('');
   
-  // Validation
+  // Validation for deposit amount
   let isValid = true;
   if (!depositAmount || isNaN(depositAmount) || depositAmount <= 0) {
     setAmountError('Please enter a valid deposit amount.');
     isValid = false;
   }
+  // Validation for Deposit Description
   if (!depositDescription.trim()) {
     setDescriptionError('Please enter a deposit description.');
     isValid = false;
   }
+
+  // If pass validation update the transaction and calculate the balance
   if (isValid) {
   const newTransaction = {
     type: 'deposit',
@@ -63,10 +58,11 @@ export default function Home() {
 };
 
 const handlePayment = () => {
+// Reset previous errors
   setAmountError('');
   setDescriptionError('');
 
-// Validation
+// Validation for Payment amount and if balance is insufficient close and goto Deposit button to top up
 let isValid = true;
 
 if (!paymentAmount || isNaN(paymentAmount) || paymentAmount < 0) { 
@@ -77,14 +73,15 @@ if (!paymentAmount || isNaN(paymentAmount) || paymentAmount < 0) {
   isValid = false;
 } 
 
+// Validation for Payment description
 if (!paymentDescription.trim()) {
  setDescriptionError('Please enter a deposit description.');
  isValid = false;
 }
-    
+
+// If pass validation update the transaction and calculate the balance
 if (isValid) {
-    // Add logic for payment here
-    // Update total amount, etc.  
+    // Add logic for payment here     
     const newTransaction = {
       type: 'payment',
       description: paymentDescription, // assuming paymentDescription is a state variable storing the payment description
@@ -103,7 +100,7 @@ const handleTransfer = () => {
   setAmountError('');
   setDescriptionError('');
 
-// Validation
+// Validation for Transfer amount and if balance is insufficient close and goto Deposit button to top up
 let isValid = true;
 if (!transferAmount || isNaN(transferAmount) || transferAmount < 0) { 
   setAmountError('Please enter a valid transfer amount.');
@@ -113,14 +110,15 @@ if (!transferAmount || isNaN(transferAmount) || transferAmount < 0) {
   isValid = false;
 } 
 
+// Validation for Transfer person name
 if (!transferName.trim()) {
   setDescriptionError('Please enter a name.');
   isValid = false;
  }
 
+// If pass validation update the transaction and calculate the balance
 if (isValid) {
-    // Add logic for payment here
-    // Update total amount, etc.  
+    // Add logic for payment here  
     const newTransaction = {
       type: 'transfer',
       description: transferName, // assuming paymentDescription is a state variable storing the payment description
@@ -136,7 +134,7 @@ if (isValid) {
 };
 
 
-  
+// Logout function 
   const navigate = useNavigate(); 
   const handleLogout = () => {     
      navigate('/Login');
@@ -165,7 +163,6 @@ if (isValid) {
               <div className="flip-card-inner">
                 <div className="flip-card-front">
                   <p className="heading_8264">MASTERCARD</p>
-                  
                   <svg viewBox="0 0 48 48" height="36" width="36" y="0px" x="0px" xmlns="http://www.w3.org/2000/svg"
                     className="logo">
                     <path d="M32 10A14 14 0 1 0 32 38A14 14 0 1 0 32 10Z" fill="#ff9800"></path>
